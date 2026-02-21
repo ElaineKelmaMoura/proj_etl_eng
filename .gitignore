@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Docker
+*.log
+
+# Env / Secrets
+.env
+.env_*
+*.key
+*.pem
+
+# AWS
+.aws/
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
