@@ -7,11 +7,38 @@ processando dados financeiros e armazenando em camadas no Amazon S3.
 
 ---
 
-## 🏗  Arquitetura Atual (v1)
+## 🏗  Arquitetura Atual (Infraestrutura + Bronze)
 
 Fluxo de dados:
 
 PostgreSQL → Kafka → Kafka Connect → Amazon S3 (Bronze) → Apache Spark
+
+
+            +-------------+
+            | PostgreSQL  |
+            +-------------+
+                    |
+                    v
+            +-------------+
+            |   Kafka     |
+            +-------------+
+                    |
+                    v
+            +-----------------+
+            | Kafka Connect   |
+            +-----------------+
+                    |
+                    v
+            +-------------+
+            |  AWS S3     |
+            |  (Bronze)   |
+            +-------------+
+                    |
+                    v
+            +-------------+
+            |  Apache     |
+            |   Spark     |
+            +-------------+
 
 ---
 
@@ -31,3 +58,13 @@ PostgreSQL → Kafka → Kafka Connect → Amazon S3 (Bronze) → Apache Spark
 ## 📂 Estrutura do Projeto
 
 
+---
+
+## 📈 Resultados Obtidos
+
+- Cluster Spark distribuído funcionando
+- Kafka Connect enviando dados para S3
+- Estrutura Bronze armazenando dados em JSON
+- Ambiente totalmente containerizado
+
+---
