@@ -45,3 +45,9 @@ services:
       - ../.env_kafka_connect  # Carregar variáveis do arquivo no diretório superior
     depends_on:
       - spark-master
+
+networks:
+  default:
+    external: true
+    name: custom_network
+
