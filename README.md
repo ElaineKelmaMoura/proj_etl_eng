@@ -1,71 +1,67 @@
-# Data Engineering Pipeline — PostgreSQL → Kafka → Spark → AWS S3 (Bronze / Silver / Gold)
+# 🚀 ETL Pipeline - Tesouro Direto IPCA
 
 ## 📌 Objetivo
 
-Pipeline completo de Engenharia de Dados com ingestão via PostgreSQL,
-publicação em Kafka e processamento distribuído com Spark,
-armazenando dados em um Data Lake no AWS S3 seguindo o padrão Bronze, Silver e Gold.Implementar um pipeline de dados distribuído utilizando Docker, Kafka e Spark,
-processando dados financeiros e armazenando em camadas no Amazon S3.
+Construir um pipeline completo de Engenharia de Dados utilizando:
+- PostgreSQL
+- Kafka
+- Spark
+- AWS S3
+- Camadas Bronze, Silver e Gold
 
 ---
 
 ## 🏗  Arquitetura
 
-### Fluxo de Dados
-
 PostgreSQL → Kafka → Spark → S3 (Bronze)
 S3 Bronze → Spark → S3 Silver
 S3 Silver → Spark → S3 Gold
 
-![Diagrama](docs/diagrama.png)
+<p align="center">
+  <img src="docs/diagrama.png" width="600">
+</p>
 
 ---
 
-## ⚙️ Stack Utilizada
+## 🛠  Tecnologias Utilizadas
 
-- Docker & Docker Compose
+- Python
+- PySpark 3.5
+- Docker
+- Kafka
 - PostgreSQL
-- Apache Kafka
-- Apache Spark (PySpark 3.5)
-- AWS S3 (s3a)
-- Parquet
+- AWS S3
+- Hadoop AWS Connector
 
 ---
 
-## 📂 Estrutura do Projeto
+## 📊 Camadas
 
-notebooks/
- ├── ingestão_postgres_kafka.ipynb
- └── transformação_silver_gold.ipynb
+### Bronze
 
----
+Dados brutos armazenados no S3
 
-##🔄 Camadas
+### Silver
 
-Bronze
+Limpeza, tratamento de datas e remoção de duplicatas
 
-°Dados brutos armazenados no S3.
+### Gold
 
-Silver
-
-°Remoção de duplicidades
-°Conversão de timestamps
-°Tratamento de nulos
-°Particionamento
-
-Gold
-
-°Agregações por Tipo
-°Métricas de média e contagem
-°Dados prontos para consumo analítico
+Agregações e métricas analíticas
 
 ---
 
-## 📈 Resultados Obtidos
+## 📈 Resultados
 
-- Cluster Spark distribuído funcionando
-- Kafka Connect enviando dados para S3
-- Estrutura Bronze armazenando dados em JSON
-- Ambiente totalmente containerizado
+- Métricas agregadas por tipo de título
+- Armazenamento em formato Parquet
+- Arquitetura escalável
 
 ---
+
+## 🔥 Diferenciais
+
+- Integração Kafka + Spark
+- Arquitetura Lakehouse
+- Uso de Docker para orquestração
+
