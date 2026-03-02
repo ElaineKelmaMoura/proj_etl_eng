@@ -17,32 +17,7 @@ PostgreSQL → Kafka → Spark → S3 (Bronze)
 S3 Bronze → Spark → S3 Silver
 S3 Silver → Spark → S3 Gold
 
-
-            +-------------+
-            | PostgreSQL  |
-            +-------------+
-                    |
-                    v
-            +-------------+
-            |   Kafka     |
-            +-------------+
-                    |
-                    v
-            +-----------------+
-            | Kafka Connect   |
-            +-----------------+
-                    |
-                    v
-            +-------------+
-            |  AWS S3     |
-            |  (Bronze)   |
-            +-------------+
-                    |
-                    v
-            +-------------+
-            |  Apache     |
-            |   Spark     |
-            +-------------+
+![Diagrama](docs/diagrama.png)
 
 ---
 
