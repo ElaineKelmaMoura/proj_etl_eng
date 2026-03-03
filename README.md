@@ -13,19 +13,20 @@ Engenharia e Arquitetura de Dados com IA (XP Educação).
 
 A solução foi implementada utilizando:
 
-PostgreSQL como base de dados
+- PostgreSQL como base de dados
 
-Apache Kafka para streaming de dados
+- Apache Kafka para streaming de dados
 
-Kafka Connect para integração e ingestão
+- Kafka Connect para integração e ingestão
 
-Apache Spark (PySpark / Spark SQL) para processamento distribuído
+- Apache Spark (PySpark / Spark SQL) para processamento distribuído
 
-Cluster Spark (Master + Worker)
+- Cluster Spark (Master + Worker)
 
-Amazon S3 como Data Lake
+- Amazon S3 como Data Lake
 
-Docker Compose para orquestração da infraestrutura.
+- Docker Compose para orquestração da infraestrutura.
+
 
 <p align="center">
   <img src="docs/diagrama_arqui.png" width="600">
@@ -38,103 +39,108 @@ Docker Compose para orquestração da infraestrutura.
 O bucket S3 foi organizado da seguinte forma:
 
 my-bucket-ek-1/
-│
-├── raw-data/         # Camada Bronze (dados brutos)
-├── processed-data/   # Camada Silver (dados tratados)
-└── analytics/        # Camada Gold (dados agregados)
+
+
+├─ raw-data/         # Camada Bronze (dados brutos)
+
+├─ processed-data/   # Camada Silver (dados tratados)
+
+├─ analytics/        # Camada Gold (dados agregados)
 
 ---
 
 🟤 Bronze – Ingestão Bruta
 
-Consumo de dados a partir de fonte externa (CSV – Tesouro Direto)
+- Consumo de dados a partir de fonte externa (CSV – Tesouro Direto)
 
-Ingestão via Kafka
+- Ingestão via Kafka
 
-Armazenamento de dados brutos no S3
+- Armazenamento de dados brutos no S3
 
-Validação básica de esquema
+- Validação básica de esquema
 
-Formato de armazenamento: Parquet
+- Formato de armazenamento: Parquet
 
 
 ⚪ Silver – Limpeza e Transformação
-Processamentos realizados:
 
-Remoção de duplicações
+ Processamentos realizados:
 
-Tratamento de valores nulos
+- Remoção de duplicações
 
-Padronização de colunas
+- Tratamento de valores nulos
 
-Ajustes de tipos de dados
+- Padronização de colunas
+
+- Ajustes de tipos de dados
 
 Dados tratados são armazenados na camada processed-data/
 
 🟡 Gold – Agregação e Métricas
-Cálculo de métricas agregadas
 
-Estruturação de dados para consumo analítico
+- Cálculo de métricas agregadas
 
-Organização da camada final em analytics/
+- Estruturação de dados para consumo analítico
+
+- Organização da camada final em analytics/
 
 Essa camada contém dados prontos para BI ou análises avançadas.
 
 ## 🛠  Tecnologias Utilizadas
 
-Python
+° Python
 
-PySpark 3.3
+° PySpark
 
-Apache Spark
+° Apache Spark
 
-Apache Kafka
+° Apache Kafka
 
-Kafka Connect
+° Kafka Connect
 
-PostgreSQL
+° PostgreSQL
 
 ° Amazon S3
 
 ° Docker
 
-° Docker Compose
 ---
 
 ## 📊 Conceitos Aplicados
 
-° Arquitetura Medallion (Bronze / Silver / Gold)
+- Arquitetura Medallion (Bronze / Silver / Gold)
 
-° Processamento distribuído com Spark
+- Processamento distribuído com Spark
 
-° Integração Kafka + Spark
+- Integração Kafka + Spark
 
-° Construção de Data Lake no S3
+- Construção de Data Lake no S3
 
-° Orquestração de serviços com Docker
+- Orquestração de serviços com Docker.
+
 ---
 
 ## 📈 Resultados
 
-Pipeline ETL funcional e escalável
+* Pipeline ETL funcional e escalável
 
-Integração entre banco relacional e streaming
+* Integração entre banco relacional e streaming
 
-Estrutura organizada de Data Lake
+* Estrutura organizada de Data Lake
 
-Armazenamento otimizado em formato Parquet
+* Armazenamento otimizado em formato Parquet
 
-Cluster Spark distribuído via Docker
+Cluster Spark distribuído via Docker.
 
 ---
 
 ## 🔥 Diferenciais
 
-Implementação real de Kafka Connect
+* Implementação real de Kafka Connect
 
-Uso de cluster Spark (Master + Worker)
+* Uso de cluster Spark (Master + Worker)
 
-Estruturação completa do Data Lake
+* Estruturação completa do Data Lake
 
-Separação clara entre ingestão, transformação e agregação.
+* Separação clara entre ingestão, transformação e agregação.
 
