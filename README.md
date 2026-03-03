@@ -1,67 +1,140 @@
-# 🚀 ETL Pipeline - Tesouro Direto IPCA
+# 🚀 Pipeline de Engenharia de Dados – Arquitetura Medallion (Bronze / Silver / Gold)
 
 ## 📌 Objetivo
 
-Construir um pipeline completo de Engenharia de Dados utilizando:
-- PostgreSQL
-- Kafka
-- Spark
-- AWS S3
-- Camadas Bronze, Silver e Gold
+Construir um pipeline completo de Engenharia de Dados integrando PostgreSQL, Kafka e Apache Spark, com
+armazenamento em um Data Lake no Amazon S3, seguindo o modelo Bronze, Silver e Gold.
+Projeto desenvolvido como desafio final do Bootcamp de Engenharia de Dados da pós-graduação em
+Engenharia e Arquitetura de Dados com IA (XP Educação).
 
 ---
 
-## 🏗  Arquitetura
+## 🏗  Arquitetura da Solução
 
-PostgreSQL → Kafka → Spark → S3 (Bronze)
-S3 Bronze → Spark → S3 Silver
-S3 Silver → Spark → S3 Gold
+A solução foi implementada utilizando:
+
+PostgreSQL como base de dados
+
+Apache Kafka para streaming de dados
+
+Kafka Connect para integração e ingestão
+
+Apache Spark (PySpark / Spark SQL) para processamento distribuído
+
+Cluster Spark (Master + Worker)
+
+Amazon S3 como Data Lake
+
+Docker Compose para orquestração da infraestrutura.
 
 <p align="center">
-  <img src="docs/diagrama.png" width="600">
+  <img src="docs/diagrama_arqui.png" width="600">
 </p>
 
 ---
 
-## 🛠  Tecnologias Utilizadas
+## 🗂  Estrutura do Data Lake (S3)
 
-- Python
-- PySpark 3.5
-- Docker
-- Kafka
-- PostgreSQL
-- AWS S3
-- Hadoop AWS Connector
+O bucket S3 foi organizado da seguinte forma:
+
+my-bucket-ek-1/
+│
+├── raw-data/         # Camada Bronze (dados brutos)
+├── processed-data/   # Camada Silver (dados tratados)
+└── analytics/        # Camada Gold (dados agregados)
 
 ---
 
-## 📊 Camadas
+🟤 Bronze – Ingestão Bruta
 
-### Bronze
+Consumo de dados a partir de fonte externa (CSV – Tesouro Direto)
 
-Dados brutos armazenados no S3
+Ingestão via Kafka
 
-### Silver
+Armazenamento de dados brutos no S3
 
-Limpeza, tratamento de datas e remoção de duplicatas
+Validação básica de esquema
 
-### Gold
+Formato de armazenamento: Parquet
 
-Agregações e métricas analíticas
 
+⚪ Silver – Limpeza e Transformação
+Processamentos realizados:
+
+Remoção de duplicações
+
+Tratamento de valores nulos
+
+Padronização de colunas
+
+Ajustes de tipos de dados
+
+Dados tratados são armazenados na camada processed-data/
+
+🟡 Gold – Agregação e Métricas
+Cálculo de métricas agregadas
+
+Estruturação de dados para consumo analítico
+
+Organização da camada final em analytics/
+
+Essa camada contém dados prontos para BI ou análises avançadas.
+
+## 🛠  Tecnologias Utilizadas
+
+Python
+
+PySpark 3.3
+
+Apache Spark
+
+Apache Kafka
+
+Kafka Connect
+
+PostgreSQL
+
+° Amazon S3
+
+° Docker
+
+° Docker Compose
+---
+
+## 📊 Conceitos Aplicados
+
+° Arquitetura Medallion (Bronze / Silver / Gold)
+
+° Processamento distribuído com Spark
+
+° Integração Kafka + Spark
+
+° Construção de Data Lake no S3
+
+° Orquestração de serviços com Docker
 ---
 
 ## 📈 Resultados
 
-- Métricas agregadas por tipo de título
-- Armazenamento em formato Parquet
-- Arquitetura escalável
+Pipeline ETL funcional e escalável
+
+Integração entre banco relacional e streaming
+
+Estrutura organizada de Data Lake
+
+Armazenamento otimizado em formato Parquet
+
+Cluster Spark distribuído via Docker
 
 ---
 
 ## 🔥 Diferenciais
 
-- Integração Kafka + Spark
-- Arquitetura Lakehouse
-- Uso de Docker para orquestração
+Implementação real de Kafka Connect
+
+Uso de cluster Spark (Master + Worker)
+
+Estruturação completa do Data Lake
+
+Separação clara entre ingestão, transformação e agregação.
 
